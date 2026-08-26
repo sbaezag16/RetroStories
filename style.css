@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --bg-color: #0d0d0d;
     --text-color: #00ff66;
@@ -15,7 +19,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    box-sizing: border-box;
     position: relative;
     overflow-x: hidden;
 }
@@ -45,7 +48,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    box-sizing: border-box;
 }
 
 .terminal-header {
@@ -86,6 +88,7 @@ body {
     border: 1px solid rgba(0, 255, 102, 0.4);
     padding: 10px;
     background: rgba(0, 255, 102, 0.02);
+    width: 100%;
 }
 
 .panel-title {
@@ -166,12 +169,13 @@ button:hover {
 /* Botón Ko-fi Integrado en Terminal */
 .kofi-terminal-btn {
     display: block;
+    width: 100%;
     background-color: rgba(0, 255, 102, 0.15);
     color: var(--text-color);
     border: 2px solid var(--border-color);
     font-family: var(--font-family);
     font-size: 0.85rem;
-    padding: 12px;
+    padding: 12px 8px;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
@@ -180,14 +184,14 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
     transition: all 0.2s ease;
     animation: crtPulse 1.5s infinite alternate;
-    box-sizing: border-box;
+    word-break: break-word;
 }
 
 .kofi-terminal-btn:hover {
     background-color: var(--text-color);
     color: var(--bg-color);
     box-shadow: 0 0 20px rgba(0, 255, 102, 1);
-    transform: scale(1.03);
+    transform: scale(1.02);
     animation: none;
 }
 
@@ -211,6 +215,7 @@ button:hover {
     .terminal-container {
         padding: 15px;
         min-height: auto;
+        width: 100%;
     }
 
     .terminal-body {
@@ -219,27 +224,22 @@ button:hover {
 
     .side-panel {
         width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-        gap: 10px;
-        box-sizing: border-box;
+        flex-direction: column;
+        gap: 15px;
     }
 
     .panel-box {
-        flex: 1 1 40%;
+        width: 100%;
     }
 
     .ascii-art {
         font-size: 0.55rem;
+        overflow-x: hidden;
     }
 
-    /* Ajuste responsivo específico para el botón en móvil */
     .kofi-terminal-btn {
-        flex: 1 1 100%;
         width: 100%;
-        padding: 10px 8px;
-        font-size: 0.75rem;
+        padding: 12px 8px;
+        font-size: 0.8rem;
     }
 }
