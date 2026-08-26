@@ -22,13 +22,15 @@ const historiaDragon = {
         "nota_campamento": {
             texto: "La nota dice: 'El dragón no ataca a quien lleva el símbolo de la luna, pero la codicia de la espada roja solo atrae a la muerte. Buscad el agua bendita'.",
             opciones: [
-                { texto: "Volver a la entrada con esta pista", destino: "entrada" }
+                { texto: "Volver a la entrada con esta pista", destino: "entrada" },
+                { texto: "Intentar abrir el baúl cercano", destino: "baul_campamento" }
             ]
         },
         "baul_campamento": {
             texto: "Forzaste la cerradura gastada. Dentro encuentras un 'Escudo del Sol' reluciente y una poción de agilidad.",
             opciones: [
-                { texto: "Equiparte el escudo y entrar a las ruinas", destino: "pasillo_con_escudo" }
+                { texto: "Equiparte el escudo y entrar a las ruinas", destino: "pasillo_con_escudo" },
+                { texto: "Guardar el escudo y examinar los grabados de la entrada", destino: "runas" }
             ]
         },
         "runas": {
@@ -50,7 +52,8 @@ const historiaDragon = {
             texto: "Avanzas por el pasillo. El 'Escudo del Sol' en tu brazo brilla con un tenue fulgor dorado al reaccionar con la magia del entorno.",
             opciones: [
                 { texto: "Ir a la izquierda (Camino del agua)", destino: "fuente" },
-                { texto: "Ir directo a la cámara del dragón", destino: "guarida_con_escudo" }
+                { texto: "Ir directo a la cámara del dragón", destino: "guarida_con_escudo" },
+                { texto: "Inspeccionar el pedestal con inscripciones", destino: "sala_acertijo" }
             ]
         },
         "fuente": {
@@ -72,13 +75,15 @@ const historiaDragon = {
             texto: "Un pedestal bloquea el paso con una inscripción: 'Solo la luz que no arde abre el camino verdadero'. Hay dos palancas a los lados.",
             opciones: [
                 { texto: "Tirar de la palanca de la Llama", destino: "trampa_dardos" },
-                { texto: "Tirar de la palanca de la Luna", destino: "pasadizo_secreto" }
+                { texto: "Tirar de la palanca de la Luna", destino: "pasadizo_secreto" },
+                { texto: "Dar la vuelta y regresar al pasillo", destino: "pasillo" }
             ]
         },
         "trampa_dardos": {
-            texto: "Un mecanismo se activa y decenas de dardos envenenados salen de las paredes. Caces al suelo sin aliento. [FINAL MALO]",
+            texto: "Un mecanismo se activa y decenas de dardos envenenados salen de las paredes. Caes al suelo sin aliento. [FINAL MALO]",
             opciones: [
-                { texto: "Reintentar", destino: "entrada" }
+                { texto: "Reiniciar la aventura desde la entrada", destino: "entrada" },
+                { texto: "Intentar revivir desde el campamento", destino: "campamento" }
             ]
         },
         "pasadizo_secreto": {
@@ -98,13 +103,15 @@ const historiaDragon = {
         "guarida_con_escudo": {
             texto: "El dragón despierta y te lanza un torrente de fuego. Tu 'Escudo del Sol' soporta la llamarada, pero la fuerza del impacto te empuja hacia el Orbe.",
             opciones: [
-                { texto: "Agarrar el Orbe y huir por el túnel de colapso", destino: "victoria_escudo" }
+                { texto: "Agarrar el Orbe y huir por el túnel de colapso", destino: "victoria_escudo" },
+                { texto: "Soltar el escudo y rodar hacia la fuente", destino: "fuente" }
             ]
         },
         "guarida_protegido": {
             texto: "Entras a la gruta. Al intentar coger el orbe, el dragón despierta y lanza fuego. ¡La barrera azul de la fuente absorbe el impacto! Tomas el orbe y corres.",
             opciones: [
-                { texto: "Victoria - Volver a jugar", destino: "entrada" }
+                { texto: "Celebrar la victoria y reiniciar aventura", destino: "entrada" },
+                { texto: "Escapar hacia el campamento exterior", destino: "campamento" }
             ]
         },
         "cornisa_sigilo": {
@@ -115,39 +122,45 @@ const historiaDragon = {
             ]
         },
         "distraccion_exito": {
-            texto: "La piedra cae lejos haciendo ruidosos ecos. El dragón se desplaza a investigar, dejándote el camino libre para coger el Orbe y salir sin ser visto.",
+            texto: "La piedra cae lejos haciendo ruidosos ecos. El dragón se desplaza a investigar, dejándote el camino libre para coger el Orbe y salir sin ser visto. [FINAL SILENCIOSO]",
             opciones: [
-                { texto: "Victoria Silenciosa - Volver a jugar", destino: "entrada" }
+                { texto: "Volver a la entrada victorioso", destino: "entrada" },
+                { texto: "Explorar el campamento con el botín", destino: "campamento" }
             ]
         },
         "sigilo_cornisa_exito": {
-            texto: "Bajas sin hacer un solo ruido. Tomas el Orbe de Luz y te deslizas por una grieta en la pared trasera hacia la superficie.",
+            texto: "Bajas sin hacer un solo ruido. Tomas el Orbe de Luz y te deslizas por una grieta en la pared trasera hacia la superficie. [FINAL MAESTRO]",
             opciones: [
-                { texto: "Victoria Maestra - Volver a jugar", destino: "entrada" }
+                { texto: "Volver a jugar desde la entrada", destino: "entrada" },
+                { texto: "Regresar al campamento base", destino: "campamento" }
             ]
         },
         "combate_legendario": {
             texto: "Blandes la 'Lanza de Matadragones'. El dragón se abalanza sobre ti, pero atraviesas su escama protectora con un golpe certero. La bestia cae y reclamas no solo el Orbe, sino todo su tesoro. [FINAL LEYENDA]",
             opciones: [
-                { texto: "Volver a jugar", destino: "entrada" }
+                { texto: "Iniciar una nueva partida", destino: "entrada" },
+                { texto: "Volver al campamento como héroe", destino: "campamento" }
             ]
         },
         "ataque_aereo": {
             texto: "Saltas desde la altura, pero el dragón te detecta en el aire y te atrapa con sus fauces antes de tocar suelo. [FINAL MALO]",
             opciones: [
-                { texto: "Reintentar", destino: "entrada" }
+                { texto: "Reintentar desde la entrada", destino: "entrada" },
+                { texto: "Reaparecer en el campamento", destino: "campamento" }
             ]
         },
         "victoria_escudo": {
             texto: "El escudo queda destruido tras soportar la llamarada, pero logras salir con el Orbe de Luz a salvo. [FINAL VICTORIOSO]",
             opciones: [
-                { texto: "Volver a jugar", destino: "entrada" }
+                { texto: "Volver a jugar", destino: "entrada" },
+                { texto: "Ir al campamento a descansar", destino: "campamento" }
             ]
         },
         "muerte_fuego": {
             texto: "Pisas una moneda de oro que resbala. El dragón abre un ojo y te reduce a cenizas en un segundo. [FINAL MALO]",
             opciones: [
-                { texto: "Reintentar", destino: "entrada" }
+                { texto: "Reintentar desde la entrada", destino: "entrada" },
+                { texto: "Probar suerte explorando el campamento", destino: "campamento" }
             ]
         }
     }
