@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Text Adventures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Capa para el efecto de líneas de televisión antigua -->
+    <div class="crt-overlay"></div>
+
+    <main class="terminal-container">
+        <!-- Encabezado del sistema -->
+        <header class="terminal-header">
+            <span class="status-dot"></span> TERMINAL_OS v1.0.4 // SYSTEM_READY
+        </header>
+
+        <!-- Disposición en 3 columnas: Lateral Izquierdo - Centro - Lateral Derecho -->
+        <div class="terminal-body">
+            
+            <!-- PANEL DECORATIVO IZQUIERDO -->
+            <aside class="side-panel left-panel">
+                <div class="panel-box">
+                    <p class="panel-title">[ SYS_INFO ]</p>
+                    <p>CPU: 12%</p>
+                    <p>RAM: 256KB</p>
+                    <p>BAUD: 9600</p>
+                </div>
+                <div class="panel-box ascii-art">
+  /\_/\  
+ ( o.o ) 
+  > ^ <  
+[SYS_ONLINE]
+                </div>
+            </aside>
+
+            <!-- ZONA CENTRAL (Juego / Menú) -->
+            <section class="main-content">
+                <section id="texto-aventura" class="terminal-text"></section>
+                <nav id="botones" class="terminal-actions"></nav>
+            </section>
+
+            <!-- PANEL DECORATIVO DERECHO -->
+            <aside class="side-panel right-panel">
+                <div class="panel-box">
+                    <p class="panel-title">[ LOGS ]</p>
+                    <p>> BOOT_OK</p>
+                    <p>> LOAD_STORIES</p>
+                    <p>> USER_CONNECT</p>
+                    <p>> AWAIT_INPUT</p>
+                </div>
+                <div class="panel-box">
+                    <p class="panel-title">[ STATUS ]</p>
+                    <p class="blink-text">● ONLINE</p>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Archivos de Historias -->
+    <script src="js/historias/historia1.js"></script>
+    <script src="js/historias/historia2.js"></script>
+    <script src="js/historias/historia3.js"></script>
+    <script src="js/historias/historia4.js"></script>
+
+    <!-- Motor y App -->
+    <script src="js/motor.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        mostrarMenuPrincipal();
+    </script>
+</body>
+</html>
