@@ -1,11 +1,10 @@
-// Array que registra todas las historias disponibles en tu proyecto.
+// Registra todas las historias disponibles usando verificaciones de existencia seguras.
 const CATALOGO_HISTORIAS = [
-    historiaCabaña,
-    historiaEspacio,
-    historiaDragon,
-    historiaCyberpunk
-];
-
+    typeof historiaCabaña !== 'undefined' ? historiaCabaña : (typeof historiaCabana !== 'undefined' ? historiaCabana : null),
+    typeof historiaEspacio !== 'undefined' ? historiaEspacio : null,
+    typeof historiaDragon !== 'undefined' ? historiaDragon : null,
+    typeof historiaCyberpunk !== 'undefined' ? historiaCyberpunk : null
+].filter(Boolean);
 
 /**
  * Renderiza la pantalla del catálogo principal con todas las historias
@@ -14,20 +13,34 @@ function mostrarMenuPrincipal() {
     const elementoTexto = document.getElementById('texto-aventura');
     const contenedorBotones = document.getElementById('botones');
 
-    // 1. Detenemos la animación anterior y ponemos el título
-    clearInterval(idIntervalo);
-    elementoTexto.innerHTML = "=== SELECCIONA UNA AVENTURA ===";
-    contenedorBotones.innerHTML = "";
+    if (typeof detenerEscritura === 'function') {
+        detenerEscritura();
+    }
 
-    // 2. Generamos los botones
+    if (elementoTexto) {
+        elementoTexto.innerHTML = "=== SELECCIONA UNA AVENTURA ===";
+    }
+    
+    if (contenedorBotones) {
+        contenedorBotones.innerHTML = "";
+    }
+
+    if (typeof actualizarInventario === 'function') {
+        actualizarInventario();
+    }
+
     CATALOGO_HISTORIAS.forEach(historia => {
         let botonHistoria = document.createElement('button');
         botonHistoria.innerText = `> ${historia.titulo}\n  ${historia.descripcion}`;
         
         botonHistoria.addEventListener('click', () => {
-            iniciarJuego(historia);
+            if (typeof iniciarJuego === 'function') {
+                iniciarJuego(historia);
+            }
         });
 
-        contenedorBotones.appendChild(botonHistoria);
+        if (contenedorBotones) {
+            contenedorBotones.appendChild(botonHistoria);
+        }
     });
 }

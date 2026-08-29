@@ -20,80 +20,129 @@ body {
     overflow-x: hidden;
 }
 
-/* Efecto de líneas CRT de monitor de tubo */
+
+/* =========================================
+   EFECTO CRT
+   ========================================= */
+
 .crt-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
     background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
+        rgba(18, 16, 16, 0) 50%,
         rgba(0, 0, 0, 0.25) 50%
     );
+
     background-size: 100% 4px;
+
     z-index: 100;
     pointer-events: none;
     opacity: 0.6;
 }
 
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+
 .terminal-container {
     width: 95%;
     max-width: 1250px;
     min-height: 85vh;
+
     border: 2px solid var(--border-color);
-    box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 102, 0.25);
+
     padding: 25px;
     border-radius: 4px;
+
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     box-sizing: border-box;
 }
+
+
+/* =========================================
+   CABECERA
+   ========================================= */
 
 .terminal-header {
     font-size: 0.9rem;
     opacity: 0.75;
+
     border-bottom: 1px dashed var(--border-color);
+
     padding-bottom: 10px;
+
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .status-dot {
-    width: 8px; height: 8px;
+    width: 8px;
+    height: 8px;
+
     background-color: var(--border-color);
+
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--border-color);
+
+    box-shadow:
+        0 0 8px var(--border-color);
 }
 
-/* Disposición principal */
+
+/* =========================================
+   CUERPO PRINCIPAL
+   ========================================= */
+
 .terminal-body {
     display: flex;
     gap: 25px;
     flex: 1;
 }
 
-/* Paneles laterales decorativos */
+
+/* =========================================
+   PANELES LATERALES
+   ========================================= */
+
 .side-panel {
     width: 180px;
+
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     font-size: 0.8rem;
-    opacity: 0.8;
 }
 
 .panel-box {
     border: 1px solid rgba(0, 255, 102, 0.4);
+
     padding: 10px;
+
     background: rgba(0, 255, 102, 0.02);
+
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .panel-title {
     margin: 0 0 8px 0;
+
     font-weight: bold;
+
     border-bottom: 1px dotted rgba(0, 255, 102, 0.4);
+
     padding-bottom: 4px;
 }
 
@@ -101,170 +150,408 @@ body {
     margin: 4px 0;
 }
 
+
+/* =========================================
+   ASCII
+   ========================================= */
+
 .ascii-art {
     white-space: pre;
+
     font-size: 0.75rem;
     text-align: center;
     line-height: 1.2;
+
     margin: 0;
 }
+
+
+/* =========================================
+   PARPADEO
+   ========================================= */
 
 .blink-text {
     animation: parpadeo 1s infinite;
 }
 
 @keyframes parpadeo {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
-/* Zona Central */
+
+/* =========================================
+   ZONA CENTRAL
+   ========================================= */
+
 .main-content {
     flex: 1;
+
     display: flex;
     flex-direction: column;
+
     gap: 25px;
+
+    min-width: 0;
 }
 
 .terminal-text {
     font-size: 1.15rem;
     line-height: 1.6;
+
     min-height: 100px;
+
     border-right: 3px solid var(--border-color);
+
     animation: cursorParpadeo 0.8s infinite;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @keyframes cursorParpadeo {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: var(--border-color); }
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--border-color);
+    }
 }
 
-/* Botones / Opciones */
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
 .terminal-actions {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
     gap: 20px;
 }
 
 button {
     background-color: transparent;
+
     color: var(--text-color);
+
     border: 1px solid var(--border-color);
+
     font-family: var(--font-family);
     font-size: 0.95rem;
+
     padding: 16px;
+
     text-align: left;
+
     cursor: pointer;
+
     transition: all 0.2s ease;
+
     white-space: pre-wrap;
+
+    box-sizing: border-box;
 }
 
 button:hover {
     background-color: var(--text-color);
+
     color: var(--bg-color);
-    box-shadow: 0 0 12px rgba(0, 255, 102, 0.6);
+
+    box-shadow:
+        0 0 12px rgba(0, 255, 102, 0.6);
 }
 
-/* Caja y Botón Ko-fi Destacado Retro */
+
+/* =========================================
+   KO-FI
+   ========================================= */
+
 .kofi-box {
     border: 1px solid var(--border-color);
+
     background: rgba(0, 255, 102, 0.08);
-    box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.15), 0 0 8px rgba(0, 255, 102, 0.2);
+
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 102, 0.15),
+        0 0 8px rgba(0, 255, 102, 0.2);
+
     animation: glowBox 3s infinite alternate;
 }
 
 @keyframes glowBox {
-    0% { box-shadow: inset 0 0 5px rgba(0, 255, 102, 0.1), 0 0 5px rgba(0, 255, 102, 0.2); }
-    100% { box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.25), 0 0 12px rgba(0, 255, 102, 0.4); }
+    0% {
+        box-shadow:
+            inset 0 0 5px rgba(0, 255, 102, 0.1),
+            0 0 5px rgba(0, 255, 102, 0.2);
+    }
+
+    100% {
+        box-shadow:
+            inset 0 0 15px rgba(0, 255, 102, 0.25),
+            0 0 12px rgba(0, 255, 102, 0.4);
+    }
 }
 
 .highlight-title {
     color: var(--bg-color);
+
     background-color: var(--text-color);
+
     padding: 2px 4px;
+
     border-bottom: none;
+
     text-shadow: none;
 }
 
 .kofi-subtext {
     font-size: 0.75rem;
+
     opacity: 0.9;
+
     margin: 8px 0 !important;
+
     text-align: center;
 }
 
 .kofi-terminal-btn {
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     gap: 6px;
+
     background-color: rgba(0, 255, 102, 0.15);
+
     color: var(--text-color);
+
     border: 1px solid var(--border-color);
+
     font-family: var(--font-family);
     font-size: 0.85rem;
     font-weight: bold;
+
     padding: 10px 6px;
+
     text-decoration: none;
+
     text-align: center;
+
     margin-top: 6px;
-    box-shadow: 0 0 6px rgba(0, 255, 102, 0.3);
+
+    box-shadow:
+        0 0 6px rgba(0, 255, 102, 0.3);
+
     transition: all 0.2s ease;
+
     box-sizing: border-box;
 }
 
 .btn-arrow {
     display: inline-block;
+
     animation: moverFlecha 1s infinite alternate;
 }
 
 @keyframes moverFlecha {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(3px); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(3px);
+    }
 }
 
 .kofi-terminal-btn:hover {
     background-color: var(--text-color);
+
     color: var(--bg-color);
-    box-shadow: 0 0 15px rgba(0, 255, 102, 0.9);
+
+    box-shadow:
+        0 0 15px rgba(0, 255, 102, 0.9);
 }
 
 .kofi-terminal-btn:hover .btn-arrow {
     animation: none;
 }
 
-/* Adaptación responsiva para pantallas pequeñas de móvil */
+
+/* =========================================
+   INVENTARIO
+   ========================================= */
+
+.inventory-box {
+    transition: box-shadow 0.2s ease;
+}
+
+#inventario {
+    min-height: 20px;
+}
+
+.inventory-empty {
+    opacity: 0.5;
+
+    margin: 0 !important;
+}
+
+.inventory-item {
+    margin: 6px 0 !important;
+
+    padding-left: 4px;
+
+    font-size: 0.75rem;
+
+    word-break: break-word;
+}
+
+.inventory-item::before {
+    content: "> ";
+}
+
+.inventory-box.inventory-updated {
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 102, 0.2),
+        0 0 10px rgba(0, 255, 102, 0.3);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
 @media (max-width: 850px) {
+
     body {
         padding: 10px;
+        align-items: flex-start;
     }
 
     .terminal-container {
+        width: 100%;
         padding: 15px;
         min-height: auto;
     }
 
     .terminal-body {
         flex-direction: column;
+        gap: 20px;
     }
 
     .side-panel {
         width: 100%;
+
         flex-wrap: wrap;
         flex-direction: row;
+
         gap: 10px;
     }
+
+    /* Los paneles del lateral izquierdo
+       pueden compartir espacio */
+
+    .left-panel .panel-box {
+        flex: 1 1 45%;
+    }
+
+    /* El inventario ocupa toda la línea */
+
+    .left-panel .inventory-box {
+        flex: 1 1 100%;
+        width: 100%;
+        order: 2;
+    }
+
+    /* ASCII después del inventario */
+
+    .left-panel .ascii-art {
+        font-size: 0.55rem;
+    }
+
+    /* Paneles derechos */
 
     .right-panel .panel-box {
         flex: 1 1 45%;
     }
 
     .right-panel .kofi-box {
-        flex: 1 1 100%; /* Ocupa todo el ancho en móvil para no cortarse */
+        flex: 1 1 100%;
         margin-top: 5px;
     }
 
-    .ascii-art {
-        font-size: 0.55rem;
+    /* Texto principal */
+
+    .terminal-text {
+        font-size: 1rem;
+        min-height: 120px;
+    }
+
+    /* Botones */
+
+    .terminal-actions {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* =========================================
+   MÓVILES PEQUEÑOS
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 5px;
+    }
+
+    .terminal-container {
+        padding: 10px;
+        border-width: 1px;
+    }
+
+    .terminal-header {
+        font-size: 0.7rem;
+        gap: 6px;
+    }
+
+    .terminal-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .panel-box {
+        padding: 8px;
+    }
+
+    .inventory-item {
+        font-size: 0.7rem;
+    }
+
+    .terminal-actions {
+        gap: 10px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 0.85rem;
     }
 }

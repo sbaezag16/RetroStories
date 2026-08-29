@@ -1,95 +1,150 @@
 const historiaCabaña = {
     titulo: "La Cabaña Fría: El Secreto del Olvido",
-    descripcion: "Una tormenta de nieve te atrapa en un refugio abandonado. Encuentra una salida antes de congelarte.",
+    descripcion: "Una tormenta de nieve te atrapa en un refugio abandonado. Explora, gestiona tus herramientas y encuentra una salida antes de morir congelado.",
     escenaInicial: "inicio",
     escenas: {
         "inicio": {
-            texto: "El viento gélido aúlla fuera. Despiertas en una cabaña de madera en penumbra. El frío muerde tus manos y la chimenea está apagada. Hay una puerta principal cerrada con llave, una habitación al fondo y un viejo diario sobre la mesa.",
+            texto: "El viento gélido aúlla fuera con fuerza ensordecedora. Despiertas sobre el suelo de madera helado de una cabaña sumida en la penumbra. Sientes las manos entumecidas y la chimenea de piedra está apagada. Frente a ti hay una puerta principal con un pesado cerrojo de hierro, una mesa de roble con objetos encima y un pasillo oscuro que se adentra hacia las habitaciones.",
             opciones: [
-                { texto: "Examinar el diario sobre la mesa", destino: "diario" },
-                { texto: "Explorar la habitación al fondo", destino: "habitacion" },
-                { texto: "Intentar forzar la puerta principal", destino: "puerta_cerrada" }
+                { texto: "Examinar la mesa de roble", destino: "mesa" },
+                { texto: "Inspeccionar la chimenea apagada", destino: "chimenea" },
+                { texto: "Avanzar por el pasillo oscuro", destino: "pasillo" },
+                { texto: "Intentar abrir la puerta principal", destino: "puerta_cerrada" }
             ]
         },
 
         "puerta_cerrada": {
-            texto: "Empujas la puerta de madera maciza con todas tus fuerzas, pero no cede. La cerradura de hierro es pesada y antigua. Necesitas una llave si quieres salir por aquí sin morir en el intento.",
+            texto: "Apoyas el hombro contra la madera maciza y empujas con fuerza, pero ni se inmuta. El mecanismo de la cerradura de hierro está congelado por dentro. Sin una llave adecuada o algo para deshelar el mecanismo, no vas a salir por aquí.",
             opciones: [
-                { texto: "Volver al centro de la cabaña", destino: "inicio" }
+                { texto: "Regresar al centro del salón", destino: "inicio" }
+            ]
+        },
+
+        "chimenea": {
+            texto: "Te acercas al hogar de piedra. Hay cenizas frías de hace días. Al inspeccionar el leñero, descubres que la madera está mojada por la nieve que entra por la chimenea. Intentar encender esto sin madera seca solo creará humo asfixiante.",
+            opciones: [
+                { texto: "Remover entre las cenizas frías", destino: "buscar_chimenea", soloUnaVez: true },
+                { texto: "Volver al centro del salón", destino: "inicio" }
+            ]
+        },
+
+        "buscar_chimenea": {
+            texto: "Remueves con cuidado las cenizas frías y encuentras un viejo atizador de hierro oxidado. Puede ser útil para hacer palanca, pero no te servirá para iluminar el camino.",
+            opciones: [
+                { texto: "Regresar al centro del salón", destino: "inicio" }
+            ]
+        },
+
+        "mesa": {
+            texto: "Sobre la mesa de roble descansa un diario con tapas de cuero raído y un candelabro de bronce sin velas. El diario parece ser la última bitácora del antiguo habitante del refugio.",
+            opciones: [
+                { texto: "Abrir y leer el diario", destino: "diario" },
+                { texto: "Volver al centro del salón", destino: "inicio" }
             ]
         },
 
         "diario": {
-            texto: "Abres el diario con páginas amarillentas. La última entrada dice: 'El frío no es lo peor que habita en este monte. Si la tormenta te atrapa, enciende la chimenea o busca la salida trasera en el sótano. La llave del sótano descansa bajo la almohada'.",
+            texto: "Las páginas crujen por el frío. Lees la última nota garabateada con prisa: 'El frío aprieta. La única vía de escape es el antiguo pasadizo minero bajo el sótano. Escondí la llave metálica bajo la almohada de la cama. ¡ADVERTENCIA! No bajes a las profundidades a oscuras, el suelo del pasadizo está derruido y hay pozos invisibles'.",
             opciones: [
-                { texto: "Ir a la habitación a buscar la llave", destino: "habitacion" },
-                { texto: "Volver al centro de la cabaña", destino: "inicio" }
+                { texto: "Ir hacia el pasillo para buscar el dormitorio", destino: "pasillo" },
+                { texto: "Volver a la mesa", destino: "mesa" }
+            ]
+        },
+
+        "pasillo": {
+            texto: "El pasillo está sumido en una oscuridad casi absoluta. La madera del suelo cruje amenazadoramente bajo tus botas. A la izquierda ves la puerta entreabierta del dormitorio y al fondo del corredor hay una puerta de madera reforzada con un letrero desgastado que dice: 'SÓTANO'.",
+            opciones: [
+                { texto: "Entrar al dormitorio", destino: "habitacion" },
+                { texto: "Examinar la puerta del sótano", destino: "puerta_sotano" },
+                { texto: "Volver al salón principal", destino: "inicio" }
             ]
         },
 
         "habitacion": {
-            texto: "Entras a un pequeño dormitorio helado. Hay una cama deshacha y un baúl metálico bajo la ventana cubierto de escarcha.",
+            texto: "Un frío helado domina el dormitorio. Hay una cama con mantas congeladas y, al fondo, un pesado baúl metálico cubierto de escarcha.",
             opciones: [
-                { texto: "Registrar la almohada de la cama", destino: "almohada" },
-                { texto: "Intentar abrir el baúl metálico", destino: "baul" },
-                { texto: "Regresar al salón principal", destino: "inicio" }
+                { texto: "Registrar la cama y las almohadas", destino: "cama", soloUnaVez: true },
+                { texto: "Inspeccionar el baúl metálico", destino: "baul_bloqueado", soloUnaVez: true },
+                { texto: "Regresar al pasillo", destino: "pasillo" }
             ]
         },
 
-        "almohada": {
-            texto: "Mueves la almohada congelada y escuchas un sonido metálico. ¡Encuentras una llave pesada de hierro! En la etiqueta pone: 'Sótano'. También descubres una trampilla secreta en el suelo de la habitación.",
+        "cama": {
+            texto: "Apartas las mantas tiesas por el hielo y buscas debajo de la almohada congelada. Encuentras una llave de hierro con empuñadura cuadrada.",
             opciones: [
-                { texto: "Usar la llave para abrir la trampilla del sótano", destino: "sotano" },
-                { texto: "Ir a probar si esta llave abre la puerta principal", destino: "puerta_falsa" }
+                { texto: "Coger la llave del sótano y volver a la habitación", destino: "habitacion", conseguirObjeto: "llave_sotano" }
             ]
         },
 
-        "baul": {
-            texto: "El baúl está sellado por el hielo. Usas tus manos para romper la capa congelada y al abrirlo encuentras una linterna funcional y cerillas secas. Te equipas con ellas.",
+        "baul_bloqueado": {
+            texto: "El baúl de metal está fuertemente sellado por una gruesa capa de hielo en el cierre. Tus dedos están entumecidos, pero aplicas fuerza bruta y rompes la capa helada. Dentro encuentras una linterna de manivela funcional.",
             opciones: [
-                { texto: "Volver a inspeccionar la habitación", destino: "habitacion" }
+                { texto: "Coger la linterna de manivela y volver a la habitación", destino: "habitacion", conseguirObjeto: "linterna" }
             ]
         },
 
-        "puerta_falsa": {
-            texto: "Metes la llave en la cerradura de la puerta principal, pero es demasiado grande. Esta llave no es de aquí. La tormenta afuera parece volverse más violenta y tus fuerzas empiezan a flaquear.",
+        "puerta_sotano": {
+            texto: "Llegas a la puerta del sótano. Tiene un pesado cerrojo metálico con una cerradura cuadrada.",
             opciones: [
-                { texto: "Volver a la habitación a buscar la trampilla", destino: "habitacion" },
-                { texto: "Intentar encender la chimenea antes de congelarte", destino: "fuego_falso" }
+                { texto: "Usar la llave de empuñadura cuadrada para abrir la puerta", destino: "sotano_abierto", requiereObjeto: "llave_sotano" },
+                { texto: "Volver al pasillo", destino: "pasillo" }
             ]
         },
 
-        "fuego_falso": {
-            texto: "Buscas madera seca cerca de la chimenea pero solo hay ramas húmedas. El humo comienza a llenar la cabaña y casi no puedes respirar. Tienes que salir de aquí ya.",
+        "sotano_abierto": {
+            texto: "La llave gira suavemente y el cerrojo cede. Abres la puerta y ves una escalera de madera que desciende al sótano en la penumbra.",
             opciones: [
-                { texto: "Ir corriendo al sótano", destino: "sotano" }
+                { texto: "Bajar las escaleras a tientas en la oscuridad", destino: "sotano_oscuras" },
+                { texto: "Encender la linterna de manivela y bajar iluminando el camino", destino: "sotano_iluminado", requiereObjeto: "linterna" }
             ]
         },
 
-        "sotano": {
-            texto: "Usas la llave de hierro y la trampilla se abre con un crujido. Bajas unos peldaños de madera hacia la oscuridad. El aire aquí abajo huele a tierra húmeda pero es notablemente más cálido que arriba. Al fondo ves un túnel empedrado.",
+        "sotano_oscuras": {
+            texto: "Bajas los peldaños a tientas. Avanzas unos pasos en la oscuridad total hasta que pisas en el vacío. El suelo del pasadizo estaba derruido y caes al pozo. [FINAL MALO: Caída en la oscuridad]",
             opciones: [
-                { texto: "Avanzar por el túnel a ciegas", destino: "tunel_ciegas" },
-                { texto: "Tocar la pared derecha y caminar con cuidado", destino: "tunel_seguro" }
+                { texto: "Reintentar desde el inicio", destino: "inicio" }
             ]
         },
 
-        "tunel_ciegas": {
-            texto: "Avanzas a toda prisa por la oscuridad, pero pisas una tabla podrida sobre un pozo de agua helada. Te caes al agua congelada. [FINAL MALO: Atrapado en la oscuridad helada]",
+        "sotano_iluminado": {
+            texto: "Bajas las escaleras usando la linterna. El haz de luz revela el antiguo sótano de piedra y el túnel minero al fondo. Gracias a la luz ves claramente un gran pozo en medio del camino que habrías pasado por alto a oscuras.",
             opciones: [
-                { texto: "Volver a empezar la historia", destino: "inicio" }
+                { texto: "Bordear el pozo con cuidado utilizando la luz", destino: "tunel_minero" },
+                { texto: "Intentar saltar por encima del pozo", destino: "salto_fallido" }
             ]
         },
 
-        "tunel_seguro": {
-            texto: "Palpas la pared húmeda y avanzas paso a paso. Tras varios minutos caminando, comienzas a ver una luz tenue y sientes aire fresco que no proviene de la tormenta.",
+        "salto_fallido": {
+            texto: "Tomas carrerilla e intentas saltar, pero la piedra húmeda del borde resbala bajo tus botas. Caes al pozo de agua helada. [FINAL MALO: Atrapado en el pozo]",
             opciones: [
-                { texto: "Avanzar hacia la luz", destino: "salida" }
+                { texto: "Reintentar la aventura", destino: "inicio" }
             ]
         },
 
-        "salida": {
-            texto: "Sales por la boca de una cueva al otro lado de la montaña. La tormenta ha quedado bloqueada por la cumbre y a lo lejos ves las luces de un pueblo acogedor. ¡Has sobrevivido a la cabaña! [FINAL BUENO: Escape Exitoso]",
+        "tunel_minero": {
+            texto: "Bordeas la fosa despacio, asegurando cada pisada. Te adentras en el túnel minero. El camino se divide más adelante en dos galerías: la izquierda desciende hacia abajo y huele a azufre; la derecha sube levemente y se siente una suave brisa.",
+            opciones: [
+                { texto: "Tomar la galería de la izquierda (descendente)", destino: "galeria_izquierda" },
+                { texto: "Tomar la galería de la derecha (ascendente)", destino: "galeria_derecha" }
+            ]
+        },
+
+        "galeria_izquierda": {
+            texto: "Sigues descendiendo. El calor aumenta, pero pronto el aire se vuelve denso y lleno de gases tóxicos. Empiezas a marearte y caes sin fuerzas. [FINAL MALO: Intoxicación por gases]",
+            opciones: [
+                { texto: "Volver a intentar", destino: "inicio" }
+            ]
+        },
+
+        "galeria_derecha": {
+            texto: "Sigues la pendiente ascendente. La corriente de aire fresco es cada vez más clara. A lo lejos distingues un punto brillante de luz natural.",
+            opciones: [
+                { texto: "Avanzar hacia la luz", destino: "salida_cueva" }
+            ]
+        },
+
+        "salida_cueva": {
+            texto: "Emerges por una grieta en la ladera sur de la montaña. El sol empieza a romper entre las nubes y abajo en el valle divisas un camino. Has logrado escapar a salvo. [FINAL BUENO: Superviviente de la Montaña]",
             opciones: [
                 { texto: "Jugar de nuevo", destino: "inicio" }
             ]

@@ -1,50 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Terminal Text Adventures</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Capa para el efecto de líneas de televisión antigua -->
     <div class="crt-overlay"></div>
 
     <main class="terminal-container">
+
         <!-- Encabezado del sistema -->
         <header class="terminal-header">
-            <span class="status-dot"></span> TERMINAL_OS v1.0.4 // SYSTEM_READY
+            <span class="status-dot"></span>
+            TERMINAL_OS v1.0.4 // SYSTEM_READY
         </header>
 
-        <!-- Disposición en 3 columnas: Lateral Izquierdo - Centro - Lateral Derecho -->
+        <!-- Disposición en 3 columnas -->
         <div class="terminal-body">
-            
-            <!-- PANEL DECORATIVO IZQUIERDO -->
+
+            <!-- PANEL IZQUIERDO -->
             <aside class="side-panel left-panel">
+
                 <div class="panel-box">
                     <p class="panel-title">[ SYS_INFO ]</p>
                     <p>CPU: 12%</p>
                     <p>RAM: 256KB</p>
                     <p>BAUD: 9600</p>
                 </div>
+
+                <div class="panel-box inventory-box">
+                    <p class="panel-title">[ INVENTARIO ]</p>
+
+                    <div id="inventario">
+                        <p class="inventory-empty">&gt; VACÍO</p>
+                    </div>
+                </div>
+
                 <div class="panel-box">
                     <pre class="ascii-art">
-/\_/\ 
+/\_/\
 ( o.o )
- > ^ < 
+ > ^ <
 [SYS_ONLINE]</pre>
                 </div>
+
             </aside>
 
-            <!-- ZONA CENTRAL (Juego / Menú) -->
+            <!-- ZONA CENTRAL -->
             <section class="main-content">
-                <section id="texto-aventura" class="terminal-text"></section>
-                <nav id="botones" class="terminal-actions"></nav>
+
+                <section
+                    id="texto-aventura"
+                    class="terminal-text">
+                </section>
+
+                <nav
+                    id="botones"
+                    class="terminal-actions">
+                </nav>
+
             </section>
 
-            <!-- PANEL DECORATIVO DERECHO -->
+            <!-- PANEL DERECHO -->
             <aside class="side-panel right-panel">
+
                 <div class="panel-box">
                     <p class="panel-title">[ LOGS ]</p>
                     <p>&gt; BOOT_OK</p>
@@ -52,34 +79,53 @@
                     <p>&gt; USER_CONNECT</p>
                     <p>&gt; AWAIT_INPUT</p>
                 </div>
+
                 <div class="panel-box">
                     <p class="panel-title">[ STATUS ]</p>
                     <p class="blink-text">● ONLINE</p>
                 </div>
+
                 <div class="panel-box kofi-box">
-                    <p class="panel-title highlight-title">[ Apoya la web ]</p>
-                    <p class="kofi-subtext">☕ ¿Me pagas un café?</p>
-                    <a href="https://ko-fi.com/C0P425T88Y" target="_blank" class="kofi-terminal-btn">
-                        <span class="btn-arrow">&gt;</span> Dona en Ko-fi
+                    <p class="panel-title highlight-title">
+                        [ Apoya la web ]
+                    </p>
+
+                    <p class="kofi-subtext">
+                        ☕ ¿Me pagas un café?
+                    </p>
+
+                    <a
+                        href="https://ko-fi.com/C0P425T88Y"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="kofi-terminal-btn">
+
+                        <span class="btn-arrow">&gt;</span>
+                        Dona en Ko-fi
+
                     </a>
                 </div>
+
             </aside>
 
         </div>
+
     </main>
 
-    <!-- Archivos de Historias -->
+    <!-- Historias -->
     <script src="js/historias/historia1.js"></script>
     <script src="js/historias/historia2.js"></script>
     <script src="js/historias/historia3.js"></script>
     <script src="js/historias/historia4.js"></script>
 
-    <!-- Motor y App -->
+    <!-- Motor y aplicación (Carga ordenada de dependencias) -->
     <script src="js/motor.js"></script>
     <script src="js/app.js"></script>
 
     <script>
         mostrarMenuPrincipal();
     </script>
+
 </body>
+
 </html>
