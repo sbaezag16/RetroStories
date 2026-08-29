@@ -495,7 +495,10 @@ button:hover {
 
     .terminal-text {
         font-size: 1rem;
-        min-height: 120px;
+        min-height: auto;
+        .main-content{
+            gap: 15px;
+        }
     }
 
     /* Botones */
@@ -536,6 +539,9 @@ button:hover {
     .terminal-text {
         font-size: 0.95rem;
         line-height: 1.5;
+        .main-content{
+            gap: 12px;
+        }
     }
 
     .panel-box {
