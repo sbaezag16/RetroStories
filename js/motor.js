@@ -168,7 +168,9 @@ function escribirTexto(mensaje) {
     detenerEscritura();
 
     // Limpiamos el texto
-    elementoTexto.textContent = "";
+    if (elementoTexto) {
+        elementoTexto.textContent = "";
+    }
 
     // No hacemos nada si no hay texto
     if (!mensaje || mensaje.length === 0) {
@@ -180,8 +182,10 @@ function escribirTexto(mensaje) {
     // Comenzamos a escribir
     idIntervalo = setInterval(() => {
 
-        elementoTexto.textContent +=
-            mensaje.charAt(posicion);
+        if (elementoTexto) {
+            elementoTexto.textContent +=
+                mensaje.charAt(posicion);
+        }
 
         posicion++;
 
@@ -219,8 +223,10 @@ function mostrarTextoCompleto() {
 
     detenerEscritura();
 
-    elementoTexto.textContent =
-        estadoJuego.texto;
+    if (elementoTexto) {
+        elementoTexto.textContent =
+            estadoJuego.texto;
+    }
 }
 
 
@@ -317,7 +323,9 @@ function volverAlMenuPrincipal() {
     actualizarInventario();
 
     // Volvemos al menú
-    mostrarMenuPrincipal();
+    if (typeof mostrarMenuPrincipal === "function") {
+        mostrarMenuPrincipal();
+    }
 }
 
 
@@ -487,6 +495,16 @@ function actualizarJuego() {
 
                     // Detener escritura
                     detenerEscritura();
+
+
+                    // ----------------------------------------
+                    // REINICIO SI VOLVEMOS AL INICIO
+                    // ----------------------------------------
+
+                    if (opcion.destino === estadoJuego.historia.escenaInicial) {
+                        estadoJuego.inventario = [];
+                        estadoJuego.escenasVisitadas = new Set();
+                    }
 
 
                     // ----------------------------------------

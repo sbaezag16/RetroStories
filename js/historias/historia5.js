@@ -14,7 +14,7 @@ const historiaAlicia = {
 
         "caida": {
             texto:
-                "Alicia huye… El suelo cede bajo tus pies y caes por un pozo tapizado de espejos rotos. Tu ropa se desgarra al rozar los trozos de cristal, múltiples arañazos cubren tu cara y brazos.\n\nImpactas suavemente contra un lecho de musgo negro. Frente a ti hay un pasillo sombríos con una puerta de madera podrida y una mesa de piedra en el centro.\n\nSobre la mesa descansan dos objetos:\n- Una botella de cristal con un líquido espeso carmesí y una etiqueta: «BÉBEME».\n- Un pastelillo mohoso con glaseado plateado y una etiqueta: «CÓMEME».",
+                "Alicia huye… El suelo cede bajo tus pies y caes por un pozo tapizado de espejos rotos. Tu ropa se desgarra al rozar los trozos de cristal, múltiples arañazos cubren tu cara y brazos.\n\nImpactas suavemente contra un lecho de musgo negro. Frente a ti hay un pasillo sombrío con una puerta de madera podrida y una mesa de piedra en el centro.\n\nSobre la mesa descansan dos objetos:\n- Una botella de cristal con un líquido espeso carmesí y una etiqueta: «BÉBEME».\n- Un pastelillo mohoso con glaseado plateado y una etiqueta: «CÓMEME».",
 
             opciones: [
                 {
@@ -34,12 +34,16 @@ const historiaAlicia = {
 
         "intentar_puerta": {
             texto:
-                "Te clavas una astilla en la mano y la puerta no se abre.",
+                "Te clavas una astilla en la mano y la puerta no cede ni un milímetro.\n\nLa única forma de avanzar parece estar sobre la mesa de piedra.",
 
             opciones: [
                 {
-                    texto: "Volver a la mesa",
-                    destino: "caida"
+                    texto: "Beber del frasco carmesí",
+                    destino: "beber_frasco"
+                },
+                {
+                    texto: "Comer el pastelillo mohoso",
+                    destino: "final_prision_piedra"
                 }
             ]
         },
@@ -246,7 +250,7 @@ const historiaAlicia = {
 
         "final_humana_libre": {
             texto:
-                "El antídoto hace efecto inmediatamente. Tus huesos se expanden y recuperas tu forma humana. Aprovechando la confusión del Conejo emocionado, atraviesas los rosales a toda prisa y sales al mundo exterior completa y libre.",
+                "El antídoto hace efecto inmediatamente. Tus huesos se expanden y recuperas tu forma humana. Aprovechando la confusión del Conejo emocionado, atravesando los rosales a toda prisa y sales al mundo exterior completa y libre.",
 
             opciones: [
                 {
