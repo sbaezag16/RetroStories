@@ -3,7 +3,8 @@ const CATALOGO_HISTORIAS = [
     typeof historiaCabaña !== 'undefined' ? historiaCabaña : (typeof historiaCabana !== 'undefined' ? historiaCabana : null),
     typeof historiaEspacio !== 'undefined' ? historiaEspacio : null,
     typeof historiaDragon !== 'undefined' ? historiaDragon : null,
-    typeof historiaCyberpunk !== 'undefined' ? historiaCyberpunk : null
+    typeof historiaCyberpunk !== 'undefined' ? historiaCyberpunk : null,
+    typeof historiaAlicia !== 'undefined' ? historiaAlicia : null
 ].filter(Boolean);
 
 /**
